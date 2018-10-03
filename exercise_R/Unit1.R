@@ -40,3 +40,58 @@ mean(Heights)
 median(Heights)
 quantile(Heights)
 
+#or a specific percentile
+quantile(Heights,0.25)
+
+#and a histogram (with some of the many options available)
+hist(Heights, breaks = c(1.6, 1.7, 1.8, 1.9), col="blue", main="Histogram", 
+    xlab="Height", ylab="Frequency")
+hist(Heights,col="blue",main="histogram",xlab="Height", ylab = "Frequency")
+
+#range
+range_Heights <- max(Heights) - min(Heights)
+range_Heights
+
+#interquartile range
+IQR(Heights)
+quantile(Heights)
+
+#standard deviation
+sd(Heights)
+
+#variance
+var(Heights)
+
+#coefficient of variation.
+CV <- function(mean, sd){
+  (sd/mean)*100
+}
+CV(mean= mean(Heights), sd=sd(Heights))
+CV(3,2)
+
+#Skewness(asymetry) coefficient and Kurtosis
+#install.packages("moments")
+library(moments)
+skewness(Heights)
+kurtosis(Heights)
+
+#depict the box and whisker plot
+#hoeizontal graph here
+boxplot(Heights, horizontal = TRUE, main="Box-Whisker plot",
+        xlab="Heights", ylab="values")
+abline(v=mean(Heights), col="red")
+
+data_expenses <- read.csv("data_csv_files/Data_Expenses.csv",header = T, sep=";", dec = ",")
+length(data_expenses$ExpensesMay)
+
+mean(data_expenses$ExpensesMay)
+median(data_expenses$ExpensesMay)
+q1<-quantile(data_expenses$ExpensesMay, 0.25)
+q3<-quantile(data_expenses$ExpensesMay, 0.75)
+may <- data_expenses$ExpensesMay
+var(may)
+sd(may)
+max(may)-min(may)
+q3-q1
+IQR(may)
+quantile(may,0.85)
