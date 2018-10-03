@@ -24,3 +24,19 @@ frequency_vector <- data$Frequency
 frequency_vector
 #now depict a piechart
 pie(frequency_vector, labels = sport_vector, main = "Pie charts of favorite sport")
+
+
+#Unit1 exercise about students heights
+#load the data in Unit1_Heights.csv
+data_height <- read.csv("data_csv_files/Unit1_Heights.csv", header = T)
+data_height
+#another way of creating varaibles is bu indicating the column:
+Heights <- data_height[,1]
+Heights
+
+#now compute the mean
+mean(Heights)
+#and the median
+median(Heights)
+quantile(Heights)
+
