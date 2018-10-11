@@ -46,3 +46,48 @@ interaction.plot(Speed_Factor,Card_Factor,Performance,
                  bg=c("blue","red","green"),
                  pch = c(18,24,22),
                  type = "b")
+
+help("interaction.plot")
+
+
+#exercise
+data_resistance <- read.csv2("./data_csv_files/Unit5_Resistance.csv", header = T)
+A <- data_resistance$A
+B <- data_resistance$B
+Resistance <- data_resistance$Resistance
+A_Factor <- as.factor(A)
+B_Factor <- as.factor(B)
+anova_resistance <- aov(lm(Resistance~A_Factor*B_Factor))
+summary(anova_resistance)
+#Pa < alpha => A is significant
+#Pb < alpha => B is significant
+#Pab > alpha => interaction isn't significant
+aggregate(Resistance~A_Factor*B_Factor, FUN = "mean")
+interaction.plot(A_Factor, B_Factor, Resistance,
+                 xlab = "A",
+                 ylab = "Resistance",
+                 trace.label = "B",
+                 main="Interaction Plot",
+                 col = c("blue","red","green"),
+                 bg=c("blue","red","green"),
+                 pch = c(18,24,22),
+                 type = "b")
+
+#lab session
+data_shop <- read.csv2("./data_csv_files/Data_Shops.csv", header = T)
+Profits <- data_shop$Profits
+Size <- data_shop$Size
+Location <- data_shop$Location
+Size_Factor <- as.factor(Size)
+Location_Factor <- as.factor(Location)
+anova_profits <- aov(lm(Profits~Size_Factor*Location_Factor))
+summary(anova_profits)
+interaction.plot(Location_Factor, Size_Factor, Profits,
+                 xlab = "Location",
+                 ylab = "Profits",
+                 trace.label = "Size",
+                 main="Interaction Plot",
+                 col = c("blue","red","green"),
+                 bg=c("blue","red","green"),
+                 pch = c(18,24,22),
+                 type = "b")
